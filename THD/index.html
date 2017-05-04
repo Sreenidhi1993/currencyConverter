@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/angular.js"></script>
+</head>
+
+<body ng-controller="MainCtrl">
+    <div class="main-div">
+        <div class="converter-head box-margin">
+            <h4>Currency Converter</h4>
+        </div>
+        <div class="box-margin">
+            <div>
+                Type in amount and select currency:
+            </div>
+            <div>
+                <input type="text" class="text-box" placeholder="Please Enter value" ng-model="convAmount" ng-change="currConvert()">
+                <select class="dropbtn" ng-model="amountToConvert" ng-change="currConvert()" ng-options="k for (k, v) in rate track by v"></select>
+            </div>
+        </div>
+        <div class="box-margin">
+            <div>
+                Converted amount:
+            </div>
+            <div>
+                <input type="number" class="text-box" placeholder="Please Enter value" ng-model="convValue" disabled>
+                <select class="dropbtn" ng-model="convertedAmount" ng-change="currConvert()" ng-options="k for (k, v) in rate track by v"></select>
+            </div>
+        </div>
+        <div class="box-margin">
+            <a href="#" class="disclaimer-link" ng-click="toggleCustom()">disclaimer</a>
+            <div class="disclaimer-display" ng-hide="disclaimer">
+                <label>Latest Currency values </label>
+
+                <div class="disclaimer" ng-repeat="(key, value) in rates">
+
+                    Cur:<span> {{key}} </span> &nbsp; val:
+                    <span> {{value}} </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
